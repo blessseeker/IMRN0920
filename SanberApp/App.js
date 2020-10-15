@@ -1,21 +1,36 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
 
-export default function App() {
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+
+import Login from './app/screens/Login';
+import About from './app/screens/About';
+import Daftar from './app/screens/Daftar';
+
+const App = () => {
+  const state = 'isLoggedIn';
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <View style={styles.container}>
+        {state == 'isNotLoggedIn' && <Login />}
+        {state == 'register' && <Daftar />}
+        {state == 'isLoggedIn' && <About />}
+      </View>
+    </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
   },
 });
+
+export default App;
